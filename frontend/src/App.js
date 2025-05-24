@@ -5,6 +5,7 @@ import MostrarGrafica from "./components/MostrarGrafica/MostrarGrafica.tsx";
 import TopYPromedio from "./components/TopYPromedio/TopYPromedio.tsx";
 import TransaccionesPorFecha from "./components/TransaccionesPorFecha/TransaccionesPorFecha.tsx";
 import VisualizarTransacciones from "./components/VisualizarTransacciones/VisualizarTransacciones.tsx";
+import MayorPagoCliente from "./components/MayorPagoPorCliente/MayorPagoPorCliente.tsx";
 
 function App() {
   const [vistaActiva, setVistaActiva] = useState(null);
@@ -32,6 +33,12 @@ function App() {
         <nav style={{ display: "flex", gap: "1rem" }}>
           {!vistaActiva && (
             <>
+              <button
+                style={botonEstilo}
+                onClick={() => setVistaActiva("MayorPagoCliente")}
+              >
+                Mayor Pago por Cliente
+              </button>
               <button
                 style={botonEstilo}
                 onClick={() => setVistaActiva("ClienteTotales")}
@@ -73,7 +80,7 @@ function App() {
       {/* Contenido principal */}
       <main style={{ padding: "2rem" }}>
         {!vistaActiva && <MostrarGrafica />}
-
+        {vistaActiva === "MayorPagoCliente" && <MayorPagoCliente />}
         {vistaActiva === "ClienteTotales" && <ClienteTotales />}
         {vistaActiva === "TransaccionesPorFecha" && <TransaccionesPorFecha />}
         {vistaActiva === "TopYPromedio" && <TopYPromedio />}
