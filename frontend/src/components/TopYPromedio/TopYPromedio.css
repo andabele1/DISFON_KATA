@@ -1,10 +1,9 @@
-/* TopYPromedio.css */
 .tabla {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
-  background-color: #333; /* gris oscuro */
-  color: #eee; /* texto claro */
+  background-color: #333; 
+  color: #eee; 
   font-family: Arial, sans-serif;
 }
 
@@ -26,4 +25,10 @@
 .tabla tbody tr:hover {
   background-color: #555;
   cursor: pointer;
+}
+
+.title-h2 {
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin-top: 1rem;
 }

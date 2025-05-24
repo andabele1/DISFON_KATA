@@ -1,33 +1,83 @@
-
-.app {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+body {
   background-color: #272727;
-  min-height: 100vh;
+  color: #eee;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.grid {
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  justify-content: center;
+button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.card {
-  background-color: white;
+button:hover {
+  background-color: #2563eb;
+  transform: scale(1.05);
+}
+
+header {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  background-color: #333333;
+  border-radius: 0 0 8px 8px;
+  padding: 1rem 2rem;
+}
+
+main {
+  background-color: #1e1e1e;
   border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  flex: 1 1 300px;
-  max-width: 400px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+  animation: fadeIn 0.4s ease forwards;
 }
 
-/* Responsive para móviles */
-@media (max-width: 600px) {
-  .grid {
-    flex-direction: column;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: #333333;
+  color: #eee;
+}
+
+.tabla th,
+.tabla td {
+  border: 1px solid #555;
+  padding: 8px;
+  text-align: left;
+}
+
+.tabla thead tr {
+  background-color: #444444;
+}
+
+.tabla tbody tr:hover {
+  background-color: #555555;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.loading-text {
+  animation: pulse 1.5s infinite ease-in-out;
+  color: #61dafb;
+  font-weight: 600;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}

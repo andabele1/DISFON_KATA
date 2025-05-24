@@ -53,17 +53,14 @@ function VisualizarTransacciones({ onBack }) {
   };
 
   if (loading) return <p>Cargando transacciones...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
 
   return (
     <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
-      <button onClick={onBack} style={{ marginBottom: "1rem" }}>
-        ← Volver
-      </button>
-      <h2>Transacciones</h2>
+      <h2 className = "title">Transacciones</h2>
 
       {/* Selector de orden */}
-      <label>
+      <label className = "title-h2">
         Ordenar por fecha:{" "}
         <select value={ordenFecha} onChange={handleChangeOrden}>
           <option value="desc">Más recientes primero</option>
@@ -71,14 +68,9 @@ function VisualizarTransacciones({ onBack }) {
         </select>
       </label>
 
-      <table
-        border="1"
-        cellPadding="8"
-        cellSpacing="0"
-        style={{ flex: 1, width: "100%", borderCollapse: "collapse", marginTop: "1rem" }}
-      >
+      <table className="tabla" style={{ marginTop: "1rem" }}>
         <thead>
-          <tr style={{ backgroundColor: "#eee" }}>
+          <tr>
             <th>ID</th>
             <th>Cliente</th>
             <th>Monto</th>
@@ -112,7 +104,7 @@ function VisualizarTransacciones({ onBack }) {
         >
           ← Anterior
         </button>
-        <span>
+        <span className = "title-h2">
           Página {pagina} de {totalPaginas}
         </span>
         <button
