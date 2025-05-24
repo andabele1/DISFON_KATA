@@ -12,7 +12,7 @@ function TransaccionesPorFecha() {
     setLoading(true);
     setError(null);
 
-    fetch(`${API_URL}/api/por_fecha/${fecha}`)
+    fetch(`${API_URL}/por_fecha/${fecha}`)
       .then((res) => {
         if (!res.ok) {
           throw new Error(`Error en la respuesta: ${res.status}`);

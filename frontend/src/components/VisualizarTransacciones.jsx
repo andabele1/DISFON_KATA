@@ -15,7 +15,7 @@ function VisualizarTransacciones({ onBack }) {
   const [ordenFecha, setOrdenFecha] = useState("desc");
 
   useEffect(() => {
-    fetch(`${API_URL}/api/transacciones`)
+    fetch(`${API_URL}/transacciones`)
       .then((res) => {
         if (!res.ok) throw new Error("Error al cargar");
         return res.json();
