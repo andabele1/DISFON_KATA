@@ -31,3 +31,16 @@ def promedios():
 def totales_mensuales():
     return jsonify(service.total_mensual())
 
+@transacciones_bp.route("/detalle_mensual", methods=["GET"])
+def detalle_mensual():
+    from flask import request
+    mes = request.args.get("mes")
+
+    if not mes:
+        return jsonify({"error": "Falta el parámetro 'mes'"}), 400
+
+    try:
+        resultado = service.detalle_por_mes(mes)
+        return jsonify(resultado)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500

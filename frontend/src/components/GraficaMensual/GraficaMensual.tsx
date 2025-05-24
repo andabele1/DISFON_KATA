@@ -3,93 +3,117 @@ import {
   Cell,
   Pie,
   PieChart,
-  ResponsiveContainer
-} from "recharts";
+  ResponsiveContainer,
 
+} from "recharts";
 import "./GraficaMensual.css";
 
-type GraficaMensualProps = {
-  onMesClick: (mes: string) => void;
-};
-
-type GraficaMensualData = {
-  name: string;
-  value: number;
-};
-
 const API_URL = process.env.REACT_APP_API_URL;
+
+interface DatoMensual {
+  mes: string;
+  total: number;
+}
+
+interface DatoDetalle {
+  categoria: string;
+  monto: number;
+}
+
 const COLORS = [
-  "#0088FE",
-  "#00C49F",
-  "#FFBB28",
-  "#FF8042",
-  "#aa66cc",
-  "#ff6666",
-  "#66cc99",
+  "#0088FE", "#00C49F", "#FFBB28", "#FF8042",
+  "#A28CFE", "#FF6699", "#33CCFF", "#66FF66",
+  "#FF6666", "#FF9933", "#CCCC00", "#66CCCC"
 ];
 
-function GraficaMensual({ onMesClick }: GraficaMensualProps) {
-  const [data, setData] = useState([] as GraficaMensualData[]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+function GraficoMensual() {
+  const [data, setData] = useState([] as Array<DatoMensual>);
+  const [detalle, setDetalle] = useState([] as Array<DatoDetalle>); 
+  const [mesSeleccionado, setMesSeleccionado] = useState(null); 
 
   useEffect(() => {
     fetch(`${API_URL}/totales_mensuales`)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Error al obtener los datos del servidor.");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        const formateado = data.map((item: any) => ({
-          name: item.mes,
-          value: item.total,
-        }));
-        setData(formateado);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
+      .then((res) => res.json())
+      .then(setData)
+      .catch((err) => console.error("Error al cargar los datos:", err));
   }, []);
 
-  const handlePieClick = (data: GraficaMensualData) => {
-    onMesClick(data.name);
+  const handleClick = (entry: DatoMensual) => {
+    setMesSeleccionado(entry.mes);
+
+    fetch(`${API_URL}/detalle_mensual?mes=${entry.mes}`)
+      .then((res) => res.json())
+      .then(setDetalle)
+      .catch((err) =>
+        console.error("Error al cargar detalle del mes:", err)
+      );
+  };
+
+  const handleVolver = () => {
+    setDetalle(null);
+    setMesSeleccionado(null);
   };
 
   return (
-    <div className="grafica-container">
-      <h2 className="grafica-title">Total Dispersado Mensualmente</h2>
-
-      {loading && <p>Cargando datos...</p>}
-      {error && <p className="error-message">{error}</p>}
-      {!loading && !error && data.length === 0 && (
-        <p>No hay datos disponibles.</p>
-      )}
-
-      {!loading && !error && data.length > 0 && (
-        <ResponsiveContainer width="100%" height={400}>
-          <PieChart>
-            <Pie
-              data={data}
-              dataKey="value"
-              nameKey="name"
-              outerRadius={120}
-              paddingAngle={3}
-              label
-              onClick={handlePieClick}
-            >
-              {data.map((_, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-              ))}
-            </Pie>
-          </PieChart>
-        </ResponsiveContainer>
+    <div className="grafico-completo">
+      {!detalle ? (
+        <>
+          <h2 className="grafico-mensual-title">Dispersión de Fondos por Mes</h2>
+          <ResponsiveContainer width="100%" height={400}>
+            <PieChart>
+              <Pie
+                data={data}
+                dataKey="total"
+                nameKey="mes"
+                cx="50%"
+                cy="50%"
+                outerRadius={120}
+                innerRadius={60}
+                paddingAngle={3}
+                isAnimationActive
+                onClick={(e) => handleClick(e.payload)}
+              >
+                {data.map((_, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
+                ))}
+              </Pie>
+            </PieChart>
+          </ResponsiveContainer>
+        </>
+      ) : (
+        <>
+          <h2 className="grafico-mensual-title">Detalle de {mesSeleccionado}</h2>
+          <button className="btn-volver" onClick={handleVolver}>
+            ← Volver
+          </button>
+          <ResponsiveContainer width="100%" height={400}>
+            <PieChart>
+              <Pie
+                data={detalle}
+                dataKey="monto"
+                nameKey="categoria"
+                cx="50%"
+                cy="50%"
+                outerRadius={120}
+                innerRadius={60}
+                paddingAngle={3}
+              >
+                {detalle.map((_, index) => (
+                  <Cell
+                    key={`cell-detalle-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
+                ))}
+              </Pie>
+            </PieChart>
+          </ResponsiveContainer>
+        </>
       )}
     </div>
   );
 }
 
-export default GraficaMensual;
+export default GraficoMensual;

@@ -55,3 +55,35 @@ def total_mensual():
     resumen = resumen.rename(columns={"monto": "total"})
     resumen = resumen.sort_values("mes", ascending=True)
     return resumen.to_dict(orient="records")
+
+def detalle_por_mes(nombre_mes):
+    df = cargar_transacciones()
+
+    # Asegúrate de convertir la columna 'fecha' a datetime si no lo está
+    df["fecha"] = pd.to_datetime(df["fecha"])
+
+    # Crear columna con nombre del mes en español
+    meses = [
+        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    ]
+    df["mes_nombre"] = df["fecha"].dt.month.apply(lambda x: meses[x - 1])
+
+    # Filtrar por el mes recibido
+    df_filtrado = df[df["mes_nombre"].str.lower() == nombre_mes.lower()]
+
+    if df_filtrado.empty:
+        return []
+
+    # Agrupar por categoría (puedes cambiar por 'concepto' si tu CSV usa eso)
+    if "categoria" in df_filtrado.columns:
+        agrupado = df_filtrado.groupby("categoria")["monto"].sum().reset_index()
+    elif "concepto" in df_filtrado.columns:
+        agrupado = df_filtrado.groupby("concepto")["monto"].sum().reset_index()
+        agrupado.rename(columns={"concepto": "categoria"}, inplace=True)
+    else:
+        raise ValueError("No se encontró columna 'categoria' o 'concepto' en los datos")
+
+    agrupado = agrupado.rename(columns={"monto": "total"})
+
+    return agrupado.to_dict(orient="records")
