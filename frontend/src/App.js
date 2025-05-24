@@ -78,7 +78,7 @@ function App() {
       </header>
 
       {/* Contenido principal */}
-      <main style={{ padding: "2rem" }}>
+      <main style={{ padding: "2rem", innerHeight: "100vh" }}>
         {!vistaActiva && <MostrarGrafica />}
         {vistaActiva === "MayorPagoCliente" && <MayorPagoCliente />}
         {vistaActiva === "ClienteTotales" && <ClienteTotales />}

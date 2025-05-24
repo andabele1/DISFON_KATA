@@ -75,7 +75,7 @@ function MostrarGrafica() {
     labels,
     datasets: [
       {
-        label: '',
+        label: 'Vizualización de Totales Mensuales',
         data: datos.map(d => d.total),
         backgroundColor: backgroundColors,
         borderColor: backgroundColors.map(c => c.replace('0.7', '1')),
@@ -119,7 +119,7 @@ function MostrarGrafica() {
           },
         },
         grid: {
-          color: '#ffffff', 
+          color: '#ffffff',
         },
       },
     },
@@ -127,10 +127,15 @@ function MostrarGrafica() {
 
 
   return (
-    <div className="w-full max-w-4xl mx-auto" style={{ height: 700 }}>
-      <h2 className="title">Totales Mensuales</h2>
-      <Bar data={chartData} options={options} style={{ paddingLeft: 150 }} />
+    <div>
+      <div>
+        <h2 className="title">Totales Mensuales</h2>
+      </div>
+      <div className="w-full max-w-4xl mx-auto" style={{ height: 700, PaddingLeft: 150 }}>
+        <Bar data={chartData} options={options} />
+      </div>
     </div>
+
   );
 };
 

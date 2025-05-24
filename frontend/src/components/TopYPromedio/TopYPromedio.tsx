@@ -9,10 +9,10 @@ type TopReceptor = {
 };
 
 function TopYPromedio() {
-  const [top5, setTop5] = useState<TopReceptor[]>([]);
-  const [promedio, setPromedio] = useState<string | null>(null);
+  const [top5, setTop5] = useState([] as TopReceptor[]);
+  const [promedio, setPromedio] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setLoading(true);

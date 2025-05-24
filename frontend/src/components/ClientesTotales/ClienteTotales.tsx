@@ -11,7 +11,7 @@ type ClienteTotal = {
 function ClienteTotales() {
   const [totales, setTotales] = useState([] as ClienteTotal[]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch(`${API_URL}/totales`)
