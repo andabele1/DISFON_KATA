@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./App.css";
 import ClienteTotales from "./components/ClientesTotales/ClienteTotales.tsx";
-import GraficoMensual from "./components/GraficaMensual/GraficaMensual.tsx";
 import TopYPromedio from "./components/TopYPromedio/TopYPromedio.tsx";
 import TransaccionesPorFecha from "./components/TransaccionesPorFecha/TransaccionesPorFecha.tsx";
 import VisualizarTransacciones from "./components/VisualizarTransacciones/VisualizarTransacciones.tsx";
@@ -13,8 +12,6 @@ function App() {
     <div className="app">
       <h1 className="title">Dashboard de Dispersión de Fondos</h1>
 
-       <GraficoMensual />
-{/* 
       {!mostrarTransacciones ? (
         <>
           <button
@@ -33,10 +30,6 @@ function App() {
 
           <div className="grid">
             <section className="card">
-              <GraficoMensual />
-            </section>
-
-            <section className="card">
               <ClienteTotales />
             </section>
 
@@ -51,7 +44,7 @@ function App() {
         </>
       ) : (
         <VisualizarTransacciones onBack={() => setMostrarTransacciones(false)} />
-      )} */}
+      )}
     </div>
   );
 }

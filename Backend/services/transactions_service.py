@@ -56,11 +56,4 @@ def total_mensual():
     resumen = resumen.sort_values("mes", ascending=True)
     return resumen.to_dict(orient="records")
 
-def detalle_por_mes(mes):
-    df = cargar_transacciones()
-    df['mes'] = df['fecha'].str.slice(0, 7)
-    filtrado = df[df['mes'] == mes]
-    resultado = filtrado.groupby('categoria')['monto'].sum().reset_index()
-    return resultado.to_dict(orient="records")
-
 
