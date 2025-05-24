@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./App.css";
-import ClienteTotales from "./components/ClienteTotales";
-import TopYPromedio from "./components/TopYPromedio";
-import TransaccionesPorFecha from "./components/TransaccionesPorFecha";
-import VisualizarTransacciones from "./components/VisualizarTransacciones";
+import ClienteTotales from "./components/ClientesTotales/ClienteTotales.tsx";
+import TopYPromedio from "./components/TopYPromedio/TopYPromedio.tsx";
+import TransaccionesPorFecha from "./components/TransaccionesPorFecha/TransaccionesPorFecha.tsx";
+import VisualizarTransacciones from "./components/VisualizarTransaccones/VisualizarTransacciones.Tsx";
 
 function App() {
   const [mostrarTransacciones, setMostrarTransacciones] = useState(false);

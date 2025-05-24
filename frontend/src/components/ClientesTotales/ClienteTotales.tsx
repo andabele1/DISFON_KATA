@@ -2,10 +2,15 @@ import { useEffect, useState } from "react";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
+type ClienteTotal = {
+  cliente_nombre: string;
+  total: number;
+};
+
 function ClienteTotales() {
-  const [totales, setTotales] = useState([]);
+  const [totales, setTotales] = useState<ClienteTotal[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetch(`${API_URL}/totales`)
