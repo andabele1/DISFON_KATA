@@ -59,7 +59,7 @@ def mayor_pago_por_cliente():
     mayores = df.loc[idx].copy()
     mayores = mayores.sort_values(by="monto", ascending=False)
     resultados = mayores[["cliente_nombre", "monto", "fecha", "id_transaccion"]].to_dict(orient="records")
-    return resultados.to_dict(orient="records")
+    return resultados
 
 
 
