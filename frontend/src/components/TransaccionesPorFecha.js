@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function TransaccionesPorFecha() {
   const [fecha, setFecha] = useState("2024-05-15");
   const [transacciones, setTransacciones] = useState([]);
@@ -10,7 +12,7 @@ function TransaccionesPorFecha() {
     setLoading(true);
     setError(null);
 
-    fetch(`http://127.0.0.1:5000/api/por_fecha/${fecha}`)
+    fetch(`${API_URL}/api/por_fecha/${fecha}`)
       .then((res) => {
         if (!res.ok) {
           throw new Error(`Error en la respuesta: ${res.status}`);

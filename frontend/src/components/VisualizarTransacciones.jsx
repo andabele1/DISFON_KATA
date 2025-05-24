@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function VisualizarTransacciones({ onBack }) {
   const [transacciones, setTransacciones] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,7 +15,7 @@ function VisualizarTransacciones({ onBack }) {
   const [ordenFecha, setOrdenFecha] = useState("desc");
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/api/transacciones")
+    fetch(`${API_URL}/api/transacciones`)
       .then((res) => {
         if (!res.ok) throw new Error("Error al cargar");
         return res.json();

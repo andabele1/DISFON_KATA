@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function TopYPromedio() {
   const [top, setTop] = useState(null);
   const [promedio, setPromedio] = useState(null);
@@ -11,7 +13,7 @@ function TopYPromedio() {
     setError(null);
 
     // Fetch para transacciones
-    const fetchPromedio = fetch("http://127.0.0.1:5000/api/transacciones")
+    const fetchPromedio = fetch(`${API_URL}/transacciones`)
       .then((res) => {
         if (!res.ok) throw new Error(`Error en transacciones: ${res.status}`);
         return res.json();
@@ -22,7 +24,7 @@ function TopYPromedio() {
       });
 
     // Fetch para top
-    const fetchTop = fetch("http://127.0.0.1:5000/api/top")
+    const fetchTop = fetch(`${API_URL}/top`)
       .then((res) => {
         if (!res.ok) throw new Error(`Error en top: ${res.status}`);
         return res.json();

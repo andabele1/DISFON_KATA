@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function ClienteTotales() {
   const [totales, setTotales] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/api/totales")
+    fetch(`${API_URL}/totales`)
       .then((res) => {
         if (!res.ok) {
           throw new Error(`Error en la respuesta: ${res.status}`);
