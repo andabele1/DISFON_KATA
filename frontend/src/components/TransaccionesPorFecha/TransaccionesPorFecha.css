@@ -1,0 +1,29 @@
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #2f2f2f; /* fondo gris oscuro */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  color: #ddd; /* texto claro */
+}
+
+.tabla th, .tabla td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #444; /* línea gris más clara */
+}
+
+.tabla th {
+  background-color: #444; /* cabecera gris */
+  color: #eee;
+  font-weight: bold;
+}
+
+.tabla tr:hover {
+  background-color: #3d3d3d; /* hover gris un poco más claro */
+}
+
+.tabla tbody tr:last-child td {
+  border-bottom: none;
+}

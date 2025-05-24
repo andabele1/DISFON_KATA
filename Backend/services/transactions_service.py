@@ -13,8 +13,9 @@ def total_por_cliente():
 def cliente_top():
     df = cargar_transacciones()
     resumen = df.groupby("cliente_nombre")["monto"].sum().reset_index()
-    top = resumen.sort_values(by="monto", ascending=False).iloc[0]
-    return {"cliente_nombre": top["cliente_nombre"], "total": top["monto"]}
+    top5 = resumen.sort_values(by="monto", ascending=False).head(5)
+    return top5.to_dict(orient="records")
+
 
 def transacciones_por_fecha(fecha):
     df = cargar_transacciones()

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./ClientesTotales.css";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -8,7 +9,7 @@ type ClienteTotal = {
 };
 
 function ClienteTotales() {
-  const [totales, setTotales] = useState<ClienteTotal[]>([]);
+  const [totales, setTotales] = useState([] as ClienteTotal[]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -35,14 +36,23 @@ function ClienteTotales() {
 
   return (
     <div>
-      <h2>Total dispersado por cliente</h2>
-      <ul>
-        {totales.map((cliente) => (
-          <li key={cliente.cliente_nombre}>
-            {cliente.cliente_nombre}: ${cliente.total.toLocaleString()}
-          </li>
-        ))}
-      </ul>
+      <h2 className="title">Total dispersado por cliente</h2>
+      <table className="tabla-clientes">
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Total Dispersado</th>
+          </tr>
+        </thead>
+        <tbody>
+          {totales.map((cliente) => (
+            <tr key={cliente.cliente_nombre}>
+              <td>{cliente.cliente_nombre}</td>
+              <td>${cliente.total.toLocaleString()}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
