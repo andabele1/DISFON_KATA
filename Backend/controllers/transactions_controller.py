@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from services import transactions_service as service
 
 transacciones_bp = Blueprint("transacciones", __name__, url_prefix="/api")
@@ -33,8 +33,8 @@ def totales_mensuales():
 
 @transacciones_bp.route("/detalle_mensual", methods=["GET"])
 def detalle_mensual():
-    from flask import request
     mes = request.args.get("mes")
+    print(f"Mes recibido: {mes}")  # <-- Debug
 
     if not mes:
         return jsonify({"error": "Falta el parámetro 'mes'"}), 400

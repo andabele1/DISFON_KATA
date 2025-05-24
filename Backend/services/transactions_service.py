@@ -50,15 +50,17 @@ def fechas_disponibles():
 
 def total_mensual():
     df = cargar_transacciones()
-    df["mes"] = df["fecha"].str.slice(0, 7)  # asumiendo que fecha es 'YYYY-MM-DD'
+    df["mes"] = df["fecha"].str.slice(0, 7)
     resumen = df.groupby("mes")["monto"].sum().reset_index()
     resumen = resumen.rename(columns={"monto": "total"})
     resumen = resumen.sort_values("mes", ascending=True)
     return resumen.to_dict(orient="records")
 
-def detalle_por_mes(mes: str):
+def detalle_por_mes(mes):
     df = cargar_transacciones()
-    df["mes"] = df["fecha"].str.slice(0, 7)
-    filtrado = df[df["mes"] == mes]
-    return filtrado.to_dict(orient="records")
+    df['mes'] = df['fecha'].str.slice(0, 7)
+    filtrado = df[df['mes'] == mes]
+    resultado = filtrado.groupby('categoria')['monto'].sum().reset_index()
+    return resultado.to_dict(orient="records")
+
 

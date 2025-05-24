@@ -49,7 +49,7 @@ const handleClick = (entry: { mes: string; total: number }) => {
               innerRadius={120}
               paddingAngle={3}
               isAnimationActive
-              onClick={handleClick}
+              onMesClick={handleClick}
             >
               {data.map((_, index) => (
                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
