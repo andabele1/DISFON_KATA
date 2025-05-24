@@ -35,8 +35,8 @@ function VisualizarTransacciones({ onBack }) {
     const fechaA = new Date(a.fecha);
     const fechaB = new Date(b.fecha);
     return ordenFecha === "desc"
-      ? fechaB - fechaA
-      : fechaA - fechaB;
+      ? fechaB.getTime() - fechaA.getTime()
+      : fechaA.getTime() - fechaB.getTime();
   });
 
   const totalPaginas = Math.ceil(transaccionesOrdenadas.length / itemsPorPagina);

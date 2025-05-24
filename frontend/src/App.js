@@ -3,7 +3,7 @@ import "./App.css";
 import ClienteTotales from "./components/ClientesTotales/ClienteTotales.tsx";
 import TopYPromedio from "./components/TopYPromedio/TopYPromedio.tsx";
 import TransaccionesPorFecha from "./components/TransaccionesPorFecha/TransaccionesPorFecha.tsx";
-import VisualizarTransacciones from "./components/VisualizarTransaccones/VisualizarTransacciones.Tsx";
+import VisualizarTransacciones from "./components/VisualizarTransacciones/VisualizarTransacciones.tsx";
 
 function App() {
   const [mostrarTransacciones, setMostrarTransacciones] = useState(false);
