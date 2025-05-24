@@ -1,7 +1,10 @@
 from flask import Flask
+from flask_cors import CORS
 from controllers.transactions_controller import transacciones_bp
 
 app = Flask(__name__)
+CORS(app)  # <--- Habilita CORS para todas las rutas
+
 app.register_blueprint(transacciones_bp)
 
 @app.route("/")
@@ -17,7 +20,6 @@ def dashboard():
         <li><a href="/api/fechas"> busqueda por fecha</a></li>
     </ul>
     """
-
 
 if __name__ == "__main__":
     app.run(debug=True)
