@@ -14,8 +14,8 @@ function App() {
       <h1 className="title">Dashboard de Dispersión de Fondos</h1>
 
        <GraficoMensual />
-
-      {/* {!mostrarTransacciones ? (
+{/* 
+      {!mostrarTransacciones ? (
         <>
           <button
             style={{
@@ -50,8 +50,8 @@ function App() {
           </div>
         </>
       ) : (
-        <VisualizarTransacciones onBack={() => setMostrarTransacciones(false)} /> */}
-      {/* )} */}
+        <VisualizarTransacciones onBack={() => setMostrarTransacciones(false)} />
+      )} */}
     </div>
   );
 }

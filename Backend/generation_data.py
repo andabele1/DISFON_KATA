@@ -28,12 +28,15 @@ clientes = [
 medios_pago = ["Transferencia", "Tarjeta", "Efectivo", "Cheque"]
 
 def generar_fecha_aleatoria():
-    hoy = datetime.now()
-    dias_atras = random.randint(0, 29)
-    fecha = hoy - timedelta(days=dias_atras)
+    fecha_inicio = datetime(2025, 1, 1)
+    fecha_fin = datetime(2025, 5, 31)
+    delta = fecha_fin - fecha_inicio
+    dias_totales = delta.days
+    dias_aleatorios = random.randint(0, dias_totales)
+    fecha = fecha_inicio + timedelta(days=dias_aleatorios)
     return fecha.strftime("%Y-%m-%d")
 
-def generar_transacciones(n=200, archivo="transacciones.csv"):
+def generar_transacciones(n=500, archivo="transacciones.csv"):
     with open(archivo, mode="w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(["id_transaccion", "fecha", "cliente_id", "cliente_nombre", "monto", "medio_pago"])
