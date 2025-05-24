@@ -3,7 +3,7 @@ from flask_cors import CORS
 from controllers.transactions_controller import transacciones_bp
 
 app = Flask(__name__)
-CORS(app)  # <--- Habilita CORS para todas las rutas
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 app.register_blueprint(transacciones_bp)
 
