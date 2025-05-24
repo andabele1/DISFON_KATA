@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const API_URL = process.env.REACT_APP_API_URL;
 
 function TransaccionesPorFecha() {
-  const [fecha, setFecha] = useState("2024-05-15");
+  const [fecha, setFecha] = useState("2025-05-01");
   const [transacciones, setTransacciones] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
