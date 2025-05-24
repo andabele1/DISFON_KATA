@@ -1,7 +1,6 @@
 from flask import Blueprint, jsonify
 from services import transactions_service as service
 
-# Agregamos el prefijo /api a todas las rutas de este blueprint
 transacciones_bp = Blueprint("transacciones", __name__, url_prefix="/api")
 
 @transacciones_bp.route("/transacciones", methods=["GET"])

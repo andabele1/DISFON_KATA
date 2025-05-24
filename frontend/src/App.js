@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import ClienteTotales from "./components/ClientesTotales/ClienteTotales.tsx";
+import GraficoMensual from "./components/GraficaMensual/GraficaMensual.tsx";
 import TopYPromedio from "./components/TopYPromedio/TopYPromedio.tsx";
 import TransaccionesPorFecha from "./components/TransaccionesPorFecha/TransaccionesPorFecha.tsx";
 import VisualizarTransacciones from "./components/VisualizarTransacciones/VisualizarTransacciones.tsx";
@@ -29,6 +30,10 @@ function App() {
           </button>
 
           <div className="grid">
+            <section className="card">
+              <GraficoMensual />
+            </section>
+
             <section className="card">
               <ClienteTotales />
             </section>

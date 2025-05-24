@@ -1,0 +1,17 @@
+.grafica-container {
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+  margin: 2rem auto;
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.grafica-title {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}

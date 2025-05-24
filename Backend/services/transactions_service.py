@@ -50,7 +50,7 @@ def fechas_disponibles():
 
 def total_mensual():
     df = cargar_transacciones()
-    df["mes"] = df["fecha"].str[:7]  # Extrae el año y mes en formato 'YYYY-MM'
+    df["mes"] = df["fecha"].str[:7] 
     resumen = df.groupby("mes")["monto"].sum().reset_index()
     resumen = resumen.rename(columns={"monto": "total"})
     resumen = resumen.sort_values("mes", ascending=True)
