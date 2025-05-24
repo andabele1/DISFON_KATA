@@ -17,7 +17,7 @@ const COLORS = [
 ];
 
 function GraficoMensual() {
-const [data, setData] = useState([] as Array<DatoMensual>);
+  const [data, setData] = useState([] as Array<DatoMensual>);
   const [mesSeleccionado, setMesSeleccionado] = useState(null);
 
   useEffect(() => {
@@ -26,6 +26,12 @@ const [data, setData] = useState([] as Array<DatoMensual>);
       .then(setData)
       .catch(console.error);
   }, []);
+
+  // Cuando el usuario hace click en un mes:
+const handleClick = (entry: { mes: string; total: number }) => {
+  // entry.mes debe estar en formato 'YYYY-MM'
+  setMesSeleccionado(entry.mes);
+};
 
   return (
     <>
@@ -43,7 +49,7 @@ const [data, setData] = useState([] as Array<DatoMensual>);
               innerRadius={120}
               paddingAngle={3}
               isAnimationActive
-              onClick={(e) => setMesSeleccionado(e.payload.mes)}
+              onClick={handleClick}
             >
               {data.map((_, index) => (
                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
