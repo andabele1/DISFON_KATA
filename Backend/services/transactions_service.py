@@ -1,4 +1,5 @@
 from utils.data_loader import cargar_transacciones
+import pandas as pd
 
 def obtener_todas():
     df = cargar_transacciones()
@@ -47,3 +48,10 @@ def fechas_disponibles():
     df = cargar_transacciones()
     return sorted(df["fecha"].unique().tolist())
 
+def total_mensual():
+    df = cargar_transacciones()
+    df["mes"] = df["fecha"].str[:7]  # Extrae el año y mes en formato 'YYYY-MM'
+    resumen = df.groupby("mes")["monto"].sum().reset_index()
+    resumen = resumen.rename(columns={"monto": "total"})
+    resumen = resumen.sort_values("mes", ascending=True)
+    return resumen.to_dict(orient="records")
