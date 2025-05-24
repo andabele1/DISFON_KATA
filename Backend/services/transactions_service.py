@@ -24,18 +24,14 @@ def transacciones_por_fecha(fecha):
 
 def transacciones_por_fecha_agrupadas():
     df = cargar_transacciones()
-
     resultado = []
-
     for fecha, grupo in df.groupby("fecha"):
         resultado.append({
             "fecha": fecha,
             "cantidad_transacciones": len(grupo),
             "transacciones": grupo.to_dict(orient="records")
         })
-
     resultado.sort(key=lambda x: x["fecha"])
-
     return resultado
 
 def promedio_por_cliente():
@@ -56,5 +52,14 @@ def total_mensual():
     resumen = resumen.rename(columns={"monto": "total"})
     resumen = resumen.sort_values("mes", ascending=True)
     return resumen.to_dict(orient="records")
+
+def mayor_pago_por_cliente():
+    df = cargar_transacciones()
+    idx = df.groupby("cliente_nombre")["monto"].idxmax()
+    mayores = df.loc[idx].copy()
+    mayores = mayores.sort_values(by="monto", ascending=False)
+    resultados = mayores[["cliente_nombre", "monto", "fecha", "id_transaccion"]].to_dict(orient="records")
+    return resultados.to_dict(orient="records")
+
 
 

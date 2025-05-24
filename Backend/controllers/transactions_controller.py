@@ -30,3 +30,7 @@ def promedios():
 @transacciones_bp.route("/totales_mensuales", methods=["GET"])
 def totales_mensuales():
     return jsonify(service.total_mensual())
+
+@transacciones_bp.route("/mayor_pago_por_cliente", methods=["GET"])
+def mayor_pago_por_cliente():
+    return jsonify(service.mayor_pago_por_cliente())

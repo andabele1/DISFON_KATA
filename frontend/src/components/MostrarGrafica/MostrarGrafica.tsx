@@ -14,7 +14,7 @@ import './MostrarGrafica.css';
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 interface DatosMensuales {
-  mes: string; 
+  mes: string;
   total: number;
 }
 
@@ -33,15 +33,15 @@ const colores = [
   'rgba(255, 70, 90, 0.9)',
   'rgba(30, 144, 255, 0.9)',
   'rgba(255, 215, 0, 0.9)',
-  'rgba(0, 206, 209, 0.9)',    
-  'rgba(138, 43, 226, 0.9)', 
-  'rgba(255, 140, 0, 0.9)',    
-  'rgba(220, 20, 60, 0.9)',   
-  'rgba(65, 105, 225, 0.9)',   
-  'rgba(255, 20, 147, 0.9)',   
+  'rgba(0, 206, 209, 0.9)',
+  'rgba(138, 43, 226, 0.9)',
+  'rgba(255, 140, 0, 0.9)',
+  'rgba(220, 20, 60, 0.9)',
+  'rgba(65, 105, 225, 0.9)',
+  'rgba(255, 20, 147, 0.9)',
   'rgba(50, 205, 50, 0.9)',
-  'rgba(255, 69, 0, 0.9)',    
-  'rgba(60, 179, 113, 0.9)', 
+  'rgba(255, 69, 0, 0.9)',
+  'rgba(60, 179, 113, 0.9)',
 ];
 
 
@@ -67,10 +67,8 @@ function MostrarGrafica() {
   if (cargando) return <p>Cargando...</p>;
   if (datos.length === 0) return <p>No hay datos para mostrar</p>;
 
-  // Etiquetas de meses convertidos
   const labels = datos.map(d => convertirMes(d.mes));
 
-  // Colores asignados uno a uno para cada barra
   const backgroundColors = datos.map((_, i) => colores[i % colores.length]);
 
   const chartData = {
@@ -86,52 +84,52 @@ function MostrarGrafica() {
     ],
   };
 
-const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top' as const,
-    },
-    tooltip: {
-      callbacks: {
-        label: (context: any) => {
-          return `Total: ${context.parsed.y}`;
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top' as const,
+      },
+      tooltip: {
+        callbacks: {
+          label: (context: any) => {
+            return `Total: ${context.parsed.y}`;
+          }
         }
       }
-    }
-  },
-  scales: {
-    x: {
-      ticks: {
-        color: '#ffffff',      // Color de los números en eje X
-        font: {
-          size: 14,
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: '#ffffff',
+          font: {
+            size: 14,
+          },
+        },
+        grid: {
+          color: '#ffffff',
         },
       },
-      grid: {
-        color: '#ffffff',      // Color de las líneas de la cuadrícula vertical
-      },
-    },
-    y: {
-      beginAtZero: true,
-      ticks: {
-        color: '#ffffff',      // Color de los números en eje Y
-        font: {
-          size: 14,
+      y: {
+        beginAtZero: true,
+        ticks: {
+          color: '#ffffff',
+          font: {
+            size: 14,
+          },
+        },
+        grid: {
+          color: '#ffffff', 
         },
       },
-      grid: {
-        color: '#ffffff',      // Color de las líneas de la cuadrícula horizontal
-      },
     },
-  },
-};
+  };
 
 
   return (
-    <div className="w-full max-w-4xl mx-auto" style={{ height: 700, paddingLeft: 150 }}>
+    <div className="w-full max-w-4xl mx-auto" style={{ height: 700 }}>
       <h2 className="title">Totales Mensuales</h2>
-      <Bar data={chartData} options={options} />
+      <Bar data={chartData} options={options} style={{ paddingLeft: 150 }} />
     </div>
   );
 };
