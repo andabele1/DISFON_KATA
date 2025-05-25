@@ -1,1 +1,0 @@
-# DISFON_KATA
