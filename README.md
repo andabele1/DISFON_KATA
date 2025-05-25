@@ -107,9 +107,9 @@ https://disfon-kata.vercel.app
 
 ## Endpoints
 
-```
-/api/transacciones
+## /api/transacciones
 
+```
 Ejemplo de respuesta:
 
 [
@@ -131,8 +131,190 @@ Ejemplo de respuesta:
     }
 ]
 ```
-### 📄 Descripción: Devuelve todas las transacciones.
-### 📤 Método: GET
-### 🔁 Respuesta: Lista de objetos con id, fecha, cliente, monto y medio de pago.
+📄 Descripción: Devuelve todas las transacciones.
+📤 Método: GET
+🔁 Respuesta: Lista de objetos con id, fecha, cliente, monto y medio de pago.
 
 
+## /api/totales
+
+```
+Ejemplo de respuesta:
+
+[
+    {
+        "cliente_nombre": "Ana Gomez",
+        "total": 206320.16
+    },
+    {
+        "cliente_nombre": "Andres Cruz",
+        "total": 111091.24
+    },
+    {
+        "cliente_nombre": "Carlos Diaz",
+        "total": 100591.02
+    },
+    {
+        "cliente_nombre": "Claudia Ruiz",
+        "total": 139495.98
+    }
+]
+
+```
+
+📄 Descripción: Devuelve el total de dinero dispersado por cada cliente.
+📤 Método: GET
+🔁 Respuesta: Lista de objetos con cliente_nombre y total.
+
+
+## /api/top
+
+```
+Ejemplo de respuesta:
+
+[
+    {
+        "cliente_nombre": "Ana Gomez",
+        "monto": 206320.16
+    },
+    {
+        "cliente_nombre": "Gabriela Herrera",
+        "monto": 145523.91
+    },
+    {
+        "cliente_nombre": "Claudia Ruiz",
+        "monto": 139495.98
+    },
+    {
+        "cliente_nombre": "Ricardo Mendoza",
+        "monto": 133957.14
+    },
+    {
+        "cliente_nombre": "Natalia Vargas",
+        "monto": 133544.9
+    }
+]
+
+```
+
+📄 Descripción: Devuelve el top 5 de clientes que más dinero recibieron.
+📤 Método: GET
+🔁 Respuesta: Lista de objetos con cliente_nombre y monto.
+
+
+## /api/por_fecha/<fecha>
+Ejemplo de solicitud:
+## /api/por_fecha/2025-05-01
+
+```
+Ejemplo de respuesta:
+
+[
+    {
+        "cliente_id": 17,
+        "cliente_nombre": "Ricardo Mendoza",
+        "fecha": "2025-05-01",
+        "id_transaccion": 366,
+        "medio_pago": "Tarjeta",
+        "monto": 3474.98
+    }
+]
+
+```
+
+📄 Descripción: Devuelve todas las transacciones realizadas en una fecha específica.
+📤 Método: GET
+🔁 Respuesta: Lista de objetos con cliente_id, cliente_nombre, fehca, id_transaccion, medio_pago y monto.
+
+
+## /api/totales_mensuales
+
+```
+Ejemplo de respuesta:
+
+[
+    {
+        "mes": "2025-01",
+        "total": 482266.6
+    },
+    {
+        "mes": "2025-02",
+        "total": 460839.81
+    },
+    {
+        "mes": "2025-03",
+        "total": 420719.07
+    },
+    {
+        "mes": "2025-04",
+        "total": 506072.1
+    },
+    {
+        "mes": "2025-05",
+        "total": 460663.71
+    }
+]
+
+```
+
+📄 Descripción: Devuelve el total de dinero dispersado agrupado por mes.
+📤 Método: GET
+🔁 Respuesta: Lista de objetos con mes y total.
+
+
+## /api/promedios
+
+```
+Ejemplo de respuesta:
+
+[
+    {
+        "cliente_nombre": "Ana Gomez",
+        "promedio": 5032.2
+    },
+    {
+        "cliente_nombre": "Andres Cruz",
+        "promedio": 3703.04
+    },
+    {
+        "cliente_nombre": "Carlos Diaz",
+        "promedio": 5029.55
+    },
+    {
+        "cliente_nombre": "Claudia Ruiz",
+        "promedio": 5579.84
+    }
+]
+
+```
+
+📄 Descripción: Devuelve el monto promedio dispersado por cliente (en el frontend se promedian estos promedios).
+📤 Método: GET
+🔁 Respuesta: Lista de objetos con mes y total.
+
+
+## /api/mayor_pago_por_cliente
+
+```
+Ejemplo de respuesta:
+
+[
+    {
+        "cliente_nombre": "Claudia Ruiz",
+        "fecha": "2025-04-04",
+        "id_transaccion": 381,
+        "monto": 9969.94
+    },
+    {
+        "cliente_nombre": "Maria Lopez",
+        "fecha": "2025-02-15",
+        "id_transaccion": 163,
+        "monto": 9946.69
+    }
+]
+
+```
+
+📄 Descripción: Devuelve la transacción de mayor valor por cada cliente.
+📤 Método: GET
+🔁 Respuesta: Lista de objetos con mes y total.

@@ -32,6 +32,7 @@ function TopYPromedio() {
           setPromedio(null);
           return;
         }
+        // Calcular el promedio de los montos
         const montoTotal = data.reduce((sum, t) => sum + t.monto, 0);
         setPromedio((montoTotal / data.length).toFixed(2)); // promedio con 2 decimales
       });
