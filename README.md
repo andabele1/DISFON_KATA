@@ -103,10 +103,11 @@ https://disfon-kata.vercel.app
 
 ```
 
-### Endpoints
+## Endpoints
 
+```
 ##/api/transacciones
-
+```
 # 📄 Descripción: Devuelve todas las transacciones.
 # 📤 Método: GET
 # 🔁 Respuesta: Lista de objetos con id, fecha, cliente, monto y medio de pago.
