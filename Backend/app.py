@@ -1,13 +1,17 @@
 from flask import Flask
 from flask_cors import CORS
-from controllers.transactions_controller import transacciones_bp
+from controllers.transactions_controller import transacciones_bp  # Importa el blueprint con las rutas de transacciones
 
-
+# Crea la aplicación Flask
 app = Flask(__name__)
+
+# Habilita CORS para permitir peticiones desde cualquier origen a rutas que empiecen con /api/
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 
+# Registra el blueprint de transacciones en la app
 app.register_blueprint(transacciones_bp)
 
+# Ruta principal que muestra un pequeño dashboard con enlaces a las APIs disponibles
 @app.route("/")
 def dashboard():
     return """
@@ -22,5 +26,6 @@ def dashboard():
     </ul>
     """
 
+# Punto de entrada para ejecutar la app en modo debug (auto recarga y mensajes de error)
 if __name__ == "__main__":
     app.run(debug=True)
