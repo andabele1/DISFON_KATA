@@ -87,9 +87,10 @@ npm i
 npm start
 
 ```
-```
+
 ## ▶️ Cómo ejecutar en Linea
 
+```bash
 ### Ir a la siguiente ruta
 
 https://disfon-kata.vercel.app
