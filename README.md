@@ -131,9 +131,9 @@ Ejemplo de respuesta:
     }
 ]
 ```
-📄 Descripción: Devuelve todas las transacciones.\n
-📤 Método: GET
-🔁 Respuesta: Lista de objetos con id, fecha, cliente, monto y medio de pago.
+📄 Descripción: Devuelve todas las transacciones.  
+📤 Método: GET  
+🔁 Respuesta: Lista de objetos con id, fecha, cliente, monto y medio de pago.  
 
 
 ## /api/totales
