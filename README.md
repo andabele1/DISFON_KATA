@@ -6,58 +6,61 @@ Este proyecto proporciona una API desarrollada con Flask para consultar, analiza
 
 ## 📂 Estructura del Proyecto
 
+```
 DISFON_KATA
 |
 |----Backend/
 |    |---controllers/
-|    |   |--transactions_controller.py -> Rutas y endpoints 
+|    |   |--transactions_controller.py        -> Rutas y endpoints
 |    |
 |    |---data/
-|    |   |--transacciones.csv -> datos 
+|    |   |--transacciones.csv                 -> Datos
 |    |
 |    |---models/
-|    |   |--transaction_model.py -> Modelo usado para el proceso de datos
+|    |   |--transaction_model.py              -> Modelo usado para el proceso de datos
 |    |
 |    |---services/
-|    |   |--transactions_service.py -> Logica de negocio
+|    |   |--transactions_service.py           -> Lógica de negocio
 |    |
 |    |---utils/
-|    |   |--data_loader.py -> Carga de datos desde el csv
+|    |   |--data_loader.py                    -> Carga de datos desde el CSV
 |    |
-|    |---app.py -> Archivo principal de la aplicacion Flask
-|    |---generation_data.py -> Archivo para generar datos aleatorios
-|    |---migrar_a_sqlite.py -> Archivo para migracion a sqLite
-|    |---requirements.txt -> Instalacion de librerias
-|        
+|    |--app.py                                -> Archivo principal de la aplicación Flask
+|    |--generation_data.py                    -> Archivo para generar datos aleatorios
+|    |--migrar_a_sqlite.py                    -> Archivo para migración a SQLite
+|    |--requirements.txt                      -> Instalación de librerías
+|
 |----frontend/
 |    |---src/
 |    |   |--components/
 |    |   |   |--ClientesTotales/
-|    |   |   |  |--ClientesTotales.css -> Estilos de la clase ClienteTotales
-|    |   |   |  |--ClienteTotales.tsx -> Clase del total dispersado por cliente
-|    |   |   |  
+|    |   |   |   |--ClientesTotales.css       -> Estilos
+|    |   |   |   |--ClienteTotales.tsx        -> Total dispersado por cliente
+|    |   |
 |    |   |   |--MayorPagoPorCliente/
-|    |   |   |  |--MayorPagoPorCliente.css -> Estilos de las clase MayorPagoPorCliente   
-|    |   |   |  |--MayorPagoPorCliente.tsx -> Clase del Mayor pago realizado por un cliente
-|    |   |   |
+|    |   |   |   |--MayorPagoPorCliente.css   -> Estilos
+|    |   |   |   |--MayorPagoPorCliente.tsx   -> Mayor pago por cliente
+|    |   |
 |    |   |   |--MostrarGrafica/
-|    |   |   |  |--MostrarGrafica.css -> Estilos de la clase MostrarGrafica
-|    |   |   |  |--MostrarGrafica.tsx -> Clase donde se almacena la grafica mostrada en App
-|    |   |   |
+|    |   |   |   |--MostrarGrafica.css        -> Estilos
+|    |   |   |   |--MostrarGrafica.tsx        -> Muestra gráfica principal
+|    |   |
 |    |   |   |--TopYPromedio/
-|    |   |   |  |--TopYPromedio.css -> Estilos de la clase TopYPromedio
-|    |   |   |  |--TopyPromedio.tsx -> Clase del Top 5 con mas dispersion y Promedio de las transacciones
-|    |   |   |
+|    |   |   |   |--TopYPromedio.css          -> Estilos
+|    |   |   |   |--TopyPromedio.tsx          -> Top 5 y promedio
+|    |   |
 |    |   |   |--TransaccionesPorFecha/
-|    |   |   |  |--TransaccionesPorFecha.css -> Estilos de la clase TransaccionesPorFecha
-|    |   |   |  |--TransaccionesPorFecha.tsx -> Clase donde e muestran las transacciones hechas en una fecha espeficica  
-|    |   |   |
+|    |   |   |   |--TransaccionesPorFecha.css -> Estilos
+|    |   |   |   |--TransaccionesPorFecha.tsx -> Transacciones por fecha
+|    |   |
 |    |   |   |--VisualizarTransacciones/
-|    |   |   |  |--VisualizarTransacciones.css -> Estilos de la clase VisualizarTransacciones
-|    |   |   |  |--VisualizarTransacciones.tsx -> Clase donde se muestran todas las transacciones
-|    |   |   |
-|    |   |   |--App.css -> Estilos para la clase App
-|    |   |   |--App.js -> Clase donde se renderizan todos los componentes
+|    |   |   |   |--VisualizarTransacciones.css -> Estilos
+|    |   |   |   |--VisualizarTransacciones.tsx -> Muestra todas las transacciones
+|    |   |
+|    |   |--App.css                           -> Estilos globales
+|    |   |--App.js                            -> Render de todos los componentes
+```
+
 
 
 ---
