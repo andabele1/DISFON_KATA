@@ -80,7 +80,9 @@ cd https://github.com/andabele1/DISFON_KATA.git
 
 cd Backend
 pip install -r requirements.txt
-python app.py "o" python3 app.py
+python app.py "o"  
+python3 app.py
+
 ```
 
 ### 3. Instalar dependencias del Frontend y ejecutar
@@ -162,9 +164,9 @@ Ejemplo de respuesta:
 
 ```
 
-📄 Descripción: Devuelve el total de dinero dispersado por cada cliente.
-📤 Método: GET
-🔁 Respuesta: Lista de objetos con cliente_nombre y total.
+📄 Descripción: Devuelve el total de dinero dispersado por cada cliente.  
+📤 Método: GET  
+🔁 Respuesta: Lista de objetos con cliente_nombre y total.  
 
 
 ## /api/top
@@ -197,9 +199,9 @@ Ejemplo de respuesta:
 
 ```
 
-📄 Descripción: Devuelve el top 5 de clientes que más dinero recibieron.
-📤 Método: GET
-🔁 Respuesta: Lista de objetos con cliente_nombre y monto.
+📄 Descripción: Devuelve el top 5 de clientes que más dinero recibieron.  
+📤 Método: GET  
+🔁 Respuesta: Lista de objetos con cliente_nombre y monto.  
 
 
 ## /api/por_fecha/<fecha>
@@ -222,9 +224,9 @@ Ejemplo de respuesta:
 
 ```
 
-📄 Descripción: Devuelve todas las transacciones realizadas en una fecha específica.
-📤 Método: GET
-🔁 Respuesta: Lista de objetos con cliente_id, cliente_nombre, fehca, id_transaccion, medio_pago y monto.
+📄 Descripción: Devuelve todas las transacciones realizadas en una fecha específica.  
+📤 Método: GET  
+🔁 Respuesta: Lista de objetos con cliente_id, cliente_nombre, fehca, id_transaccion, medio_pago y monto.  
 
 
 ## /api/totales_mensuales
@@ -257,9 +259,9 @@ Ejemplo de respuesta:
 
 ```
 
-📄 Descripción: Devuelve el total de dinero dispersado agrupado por mes.
-📤 Método: GET
-🔁 Respuesta: Lista de objetos con mes y total.
+📄 Descripción: Devuelve el total de dinero dispersado agrupado por mes.  
+📤 Método: GET  
+🔁 Respuesta: Lista de objetos con mes y total.  
 
 
 ## /api/promedios
@@ -288,9 +290,9 @@ Ejemplo de respuesta:
 
 ```
 
-📄 Descripción: Devuelve el monto promedio dispersado por cliente (en el frontend se promedian estos promedios).
-📤 Método: GET
-🔁 Respuesta: Lista de objetos con mes y total.
+📄 Descripción: Devuelve el monto promedio dispersado por cliente (en el frontend se promedian estos promedios).  
+📤 Método: GET  
+🔁 Respuesta: Lista de objetos con mes y total.  
 
 
 ## /api/mayor_pago_por_cliente
@@ -315,6 +317,73 @@ Ejemplo de respuesta:
 
 ```
 
-📄 Descripción: Devuelve la transacción de mayor valor por cada cliente.
-📤 Método: GET
-🔁 Respuesta: Lista de objetos con mes y total.
+📄 Descripción: Devuelve la transacción de mayor valor por cada cliente.  
+📤 Método: GET  
+🔁 Respuesta: Lista de objetos con mes y total.  
+
+
+## Migracion a sqLite
+
+Se agrego la manera de migrar el .csv a una DB en sqlLite, siga los siguientes pasos para realizarlo:  
+
+Nota: Si el Backend ya esta ejecutandose, en la terminal haga el comando "Ctrl + C" para poder terminarlo
+
+### Paso 1
+
+``` bash
+
+cd Backend
+python migrar_a_sqlite.py "o"  
+python3 migrar_a_sqlite.py
+
+```
+
+### Paso 2 
+
+Dirijase a la carpeta utils y comente el siguiente codigo: (De la linea 1 a la linea 10)
+
+```
+import pandas as pd
+import os
+
+# Función para cargar las transacciones desde un archivo CSV
+def cargar_transacciones():
+    # Construye la ruta al archivo 'transacciones.csv' ubicado en la carpeta 'data' (nivel superior al actual)
+    ruta = os.path.join(os.path.dirname(__file__), '..', 'data', 'transacciones.csv')
+    # Lee el archivo CSV y devuelve un DataFrame de pandas con los datos
+    df = pd.read_csv(ruta)
+    return df
+
+```
+
+### Paso 3
+
+Descomente el siguiente codigo: (De la linea 13 a la linea 25)
+
+```
+
+# import sqlite3
+# import pandas as pd
+
+# DB_PATH = "transacciones.db"
+
+# def cargar_transacciones():
+#     # Abre una conexión a la base de datos SQLite
+#     conn = sqlite3.connect(DB_PATH)
+#     # Ejecuta una consulta SQL para traer todas las filas de la tabla 'transacciones'
+#     df = pd.read_sql_query("SELECT * FROM transacciones", conn)
+#     # Cierra la conexión a la base de datos
+#     conn.close()
+#     return df
+
+```
+
+### Ejecute el Backend
+
+```bash
+
+python app.py "o"  
+python3 app.py
+
+```
+
