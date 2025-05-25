@@ -74,16 +74,18 @@ git clone https://github.com/andabele1/DISFON_KATA.git
 cd https://github.com/andabele1/DISFON_KATA.git
 ```
 
-```bash
 ### 2. Instalar dependencias del Backend y ejecutar
+
+```bash
 
 cd Backend
 pip install -r requirements.txt
 python app.py "o" python3 app.py
 ```
 
-```bash
 ### 3. Instalar dependencias del Frontend y ejecutar
+
+```bash
 
 cd ..
 cd frontend
@@ -103,12 +105,34 @@ https://disfon-kata.vercel.app
 
 ```
 
-### Endpoints
+## Endpoints
 
-##/api/transacciones
+```
+/api/transacciones
 
-# 📄 Descripción: Devuelve todas las transacciones.
-# 📤 Método: GET
-# 🔁 Respuesta: Lista de objetos con id, fecha, cliente, monto y medio de pago.
+Ejemplo de respuesta:
+
+[
+    {
+        "cliente_id": 4,
+        "cliente_nombre": "Maria Lopez",
+        "fecha": "2025-02-20",
+        "id_transaccion": 1,
+        "medio_pago": "Efectivo",
+        "monto": 8355.97
+    },
+    {
+        "cliente_id": 11,
+        "cliente_nombre": "Jorge Alvarez",
+        "fecha": "2025-02-21",
+        "id_transaccion": 2,
+        "medio_pago": "Cheque",
+        "monto": 129.59
+    }
+]
+```
+### 📄 Descripción: Devuelve todas las transacciones.
+### 📤 Método: GET
+### 🔁 Respuesta: Lista de objetos con id, fecha, cliente, monto y medio de pago.
 
 
