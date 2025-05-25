@@ -72,13 +72,17 @@ DISFON_KATA
 ```bash
 git clone https://github.com/andabele1/DISFON_KATA.git
 cd https://github.com/andabele1/DISFON_KATA.git
+```
 
+```bash
 ### 2. Instalar dependencias del Backend y ejecutar
 
 cd Backend
 pip install -r requirements.txt
 python app.py "o" python3 app.py
+```
 
+```bash
 ### 3. Instalar dependencias del Frontend y ejecutar
 
 cd ..
