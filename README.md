@@ -86,6 +86,8 @@ cd frontend
 npm i
 npm start
 
+```
+```
 ## ▶️ Cómo ejecutar en Linea
 
 ### Ir a la siguiente ruta
@@ -94,6 +96,7 @@ https://disfon-kata.vercel.app
 
 # Nota: Pueden haber un poco de demoras por si el servicio de "duerme"
 
+```
 
 ### Endpoints
 
