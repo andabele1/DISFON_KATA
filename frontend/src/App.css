@@ -1,10 +1,38 @@
-body {
-  background-color: #1e1e1e;
-  color: #eee;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* App.css */
+
+.app {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1f2937; /* fondo oscuro */
+  min-height: 100vh;
+  color: white;
 }
 
-button {
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #444444;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 8px 8px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.app-title {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.app-nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
   background-color: #3b82f6;
   color: white;
   border: none;
@@ -12,71 +40,29 @@ button {
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-weight: 600;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.2s ease;
+  user-select: none;
 }
 
-button:hover {
+.btn:hover {
   background-color: #2563eb;
-  transform: scale(1.05);
 }
 
-header {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-  background-color: #333333;
-  border-radius: 0 0 8px 8px;
-  padding: 1rem 2rem;
+.btn-volver {
+  background-color: #ef4444;
+  color: white;
 }
 
-main {
-  background-color: #1e1e1e;
-  border-radius: 8px;
+.app-main {
   padding: 2rem;
-  animation: fadeIn 0.4s ease forwards;
+  min-height: calc(100vh - 72px); /* Ajustar según header */
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.vista-titulo {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  font-size: 1.75rem;
+  color: #f9fafb;
+  text-align: center;
 }
-
-.tabla {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-  background-color: #333333;
-  color: #eee;
-}
-
-.tabla th,
-.tabla td {
-  border: 1px solid #555;
-  padding: 8px;
-  text-align: left;
-}
-
-.tabla thead tr {
-  background-color: #444444;
-}
-
-.tabla tbody tr:hover {
-  background-color: #555555;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.loading-text {
-  animation: pulse 1.5s infinite ease-in-out;
-  color: #61dafb;
-  font-weight: 600;
-}
-
-/* @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-} */

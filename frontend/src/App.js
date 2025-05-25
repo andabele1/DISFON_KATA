@@ -8,67 +8,63 @@ import VisualizarTransacciones from "./components/VisualizarTransacciones/Visual
 import MayorPagoCliente from "./components/MayorPagoPorCliente/MayorPagoPorCliente.tsx";
 
 function App() {
+  // Estado para controlar la vista activa
   const [vistaActiva, setVistaActiva] = useState(null);
+
+  // Función para renderizar la vista activa
+  const renderVista = () => {
+    switch (vistaActiva) {
+      case "MayorPagoCliente":
+        return <MayorPagoCliente />;
+      case "ClienteTotales":
+        return <ClienteTotales />;
+      case "TransaccionesPorFecha":
+        return <TransaccionesPorFecha />;
+      case "TopYPromedio":
+        return <TopYPromedio />;
+      case "VisualizarTransacciones":
+        return <VisualizarTransacciones onBack={() => setVistaActiva(null)} />;
+      default:
+        return <MostrarGrafica />;
+    }
+  };
+
+  // Botones para cambiar entre vistas
+  const botones = [
+    { id: "MayorPagoCliente", label: "Mayor Pago por Cliente" },
+    { id: "ClienteTotales", label: "Totales por Cliente" },
+    { id: "TransaccionesPorFecha", label: "Transacciones por Fecha" },
+    { id: "TopYPromedio", label: "Top y Promedio" },
+    { id: "VisualizarTransacciones", label: "Transacciones Detalladas" },
+  ];
+
+  const formatearTitulo = (vista) => {
+    // Convierte camelCase o PascalCase en texto con espacios
+    return vista
+      .replace(/([A-Z])/g, " $1")
+      .trim()
+      .replace(/^./, (str) => str.toUpperCase());
+  };
 
   return (
     <div className="app">
-      <header
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          backgroundColor: "#444444",
-          padding: "1rem 2rem",
-          boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
-          borderRadius: "0 0 8px 8px",
-          position: "sticky",
-          top: 0,
-          zIndex: 1000,
-        }}
-      >
-        <h1 style={{ margin: 0, fontWeight: "bold", fontSize: "1.5rem", color: "#ffffff" }}>
-          Dispersión de Fondos
-        </h1>
+      <header className="app-header">
+        <h1 className="app-title">Dispersión de Fondos</h1>
 
-        <nav style={{ display: "flex", gap: "1rem" }}>
-          {!vistaActiva && (
-            <>
+        <nav className="app-nav">
+          {!vistaActiva ? (
+            botones.map(({ id, label }) => (
               <button
-                style={botonEstilo}
-                onClick={() => setVistaActiva("MayorPagoCliente")}
+                key={id}
+                className="btn"
+                onClick={() => setVistaActiva(id)}
               >
-                Mayor Pago por Cliente
+                {label}
               </button>
-              <button
-                style={botonEstilo}
-                onClick={() => setVistaActiva("ClienteTotales")}
-              >
-                Totales por Cliente
-              </button>
-              <button
-                style={botonEstilo}
-                onClick={() => setVistaActiva("TransaccionesPorFecha")}
-              >
-                Transacciones por Fecha
-              </button>
-              <button
-                style={botonEstilo}
-                onClick={() => setVistaActiva("TopYPromedio")}
-              >
-                Top y Promedio
-              </button>
-              <button
-                style={botonEstilo}
-                onClick={() => setVistaActiva("VisualizarTransacciones")}
-              >
-                Transacciones Detalladas
-              </button>
-            </>
-          )}
-
-          {vistaActiva && (
+            ))
+          ) : (
             <button
-              style={{ ...botonEstilo, backgroundColor: "#ef4444", color: "white" }}
+              className="btn btn-volver"
               onClick={() => setVistaActiva(null)}
             >
               Volver
@@ -77,30 +73,14 @@ function App() {
         </nav>
       </header>
 
-      {/* Contenido principal */}
-      <main style={{ padding: "2rem", innerHeight: "100vh" }}>
-        {!vistaActiva && <MostrarGrafica />}
-        {vistaActiva === "MayorPagoCliente" && <MayorPagoCliente />}
-        {vistaActiva === "ClienteTotales" && <ClienteTotales />}
-        {vistaActiva === "TransaccionesPorFecha" && <TransaccionesPorFecha />}
-        {vistaActiva === "TopYPromedio" && <TopYPromedio />}
-        {vistaActiva === "VisualizarTransacciones" && (
-          <VisualizarTransacciones onBack={() => setVistaActiva(null)} />
+      <main className="app-main">
+        {vistaActiva && (
+          <h2 className="vista-titulo">{formatearTitulo(vistaActiva)}</h2>
         )}
+        {renderVista()}
       </main>
     </div>
   );
 }
-
-const botonEstilo = {
-  backgroundColor: "#3b82f6",
-  color: "white",
-  border: "none",
-  borderRadius: "6px",
-  padding: "0.5rem 1rem",
-  cursor: "pointer",
-  fontWeight: "600",
-  transition: "background-color 0.2s ease",
-};
 
 export default App;
