@@ -40,7 +40,7 @@ function MayorPagoCliente() {
 
   return (
     <div>
-      <p>Representa el mayor pago realizado por cada cliente.</p>
+      <p>Representa el mayor movimiento realizado por cada cliente.</p>
       <table className="tabla">
         <thead>
           <tr>

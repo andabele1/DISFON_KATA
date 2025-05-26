@@ -18,9 +18,9 @@ type Props = {
 };
 
 function VisualizarTransacciones({ onBack }: Props) {
-  const [transacciones, setTransacciones] = useState([] as Transaccion[]); 
-  const [loading, setLoading] = useState(true); 
-  const [error, setError] = useState(null); 
+  const [transacciones, setTransacciones] = useState([] as Transaccion[]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   // Estado para manejar la paginación
   const [pagina, setPagina] = useState(1);
@@ -37,6 +37,7 @@ function VisualizarTransacciones({ onBack }: Props) {
         return res.json();
       })
       .then((data) => {
+        console.log("Transacciones recibidas:", data);
         setTransacciones(data);
         setLoading(false);
       })
@@ -103,7 +104,7 @@ function VisualizarTransacciones({ onBack }: Props) {
               <td>{t.id_transaccion}</td>
               <td>{t.cliente_nombre}</td>
               <td>${t.monto.toLocaleString()}</td>
-              <td>{new Date(t.fecha).toLocaleDateString()}</td>
+              <td>{t.fecha}</td>
             </tr>
           ))}
         </tbody>

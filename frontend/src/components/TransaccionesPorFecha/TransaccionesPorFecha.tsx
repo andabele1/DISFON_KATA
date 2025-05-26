@@ -12,7 +12,7 @@ type Transaccion = {
 };
 
 function TransaccionesPorFecha() {
-  const [fecha, setFecha] = useState("2025-05-01"); // Fecha inicial por defecto
+  const [fecha, setFecha] = useState("2025-01-01"); // Fecha inicial por defecto
   const [transacciones, setTransacciones] = useState([] as Transaccion[]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -40,7 +40,7 @@ function TransaccionesPorFecha() {
 
   return (
     <div>
-      <p>Muestra las trasacciones hechas en la fecha seleccionada, seleccione un fecha en el calendario.</p>
+      <p>Muestra las transacciones realizadas en la fecha seleccionada, seleccione un fecha en el calendario.</p>
       <input
         type="date"
         value={fecha}
