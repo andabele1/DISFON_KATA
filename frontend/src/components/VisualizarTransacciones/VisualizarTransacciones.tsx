@@ -78,7 +78,7 @@ function VisualizarTransacciones({ onBack }: Props) {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
-      <p>Resumen de cada transaccione hecha, modifique el orden de la vista si desea ver desde las mas antiguas o las mas recientes</p>
+      <p>Resumen de cada transaccione realizada, modifique el orden de la vista si desea ver desde las mas antiguas o las mas recientes.</p>
       {/* Selector de orden */}
       <label className="title-h2">
         Ordenar por fecha:{" "}

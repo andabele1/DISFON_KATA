@@ -40,7 +40,7 @@ function TransaccionesPorFecha() {
 
   return (
     <div>
-      <p>Muestra las transacciones realizadas en la fecha seleccionada, seleccione un fecha en el calendario.</p>
+      <p>Muestra las transacciones realizadas en la fecha seleccionada, seleccione una fecha en el calendario.</p>
       <input
         type="date"
         value={fecha}
