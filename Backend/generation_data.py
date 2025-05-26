@@ -40,7 +40,7 @@ def generar_fecha_aleatoria():
     return fecha.strftime("%Y-%m-%d")
 
 # Genera n transacciones aleatorias y las guarda en un archivo CSV
-def generar_transacciones(n=500, archivo="transacciones.csv"):
+def generar_transacciones(n=200, archivo="transacciones.csv"):
     with open(archivo, mode="w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         # Escribe la fila de cabeceras del CSV
